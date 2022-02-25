@@ -1,7 +1,7 @@
 {
   "name": "storagedotjs",
   "version": "1.1.0",
-  "description": "Javascript storage manager",
+  "description": "A simple, lightweight JavaScript api for accessing Local Storage.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
