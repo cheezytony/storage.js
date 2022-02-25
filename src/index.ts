@@ -4,7 +4,7 @@ type LocalStorageData = {
   expiresBy: number;
 };
 
-export const toTimestamp = (date: string | number | Date): number => {
+export const toTimestamp = (date: string | number | Date) => {
   switch (date.constructor) {
     case Date:
       return (date as Date).getTime();
@@ -20,8 +20,6 @@ export const toTimestamp = (date: string | number | Date): number => {
         switch (data.replace(/^(?:\d{1,})(y|m|d|h|min|s)$/i, '$1').toLowerCase()) {
           // Frequency sorting
           case 'm':
-          case 'month':
-          case 'months':
             difference = timeString * 2592000;
             break;
           case 'd':
@@ -31,16 +29,9 @@ export const toTimestamp = (date: string | number | Date): number => {
             difference = timeString * 3600;
             break;
           case 'min':
-          case 'mins':
-          case 'minute':
-          case 'minutes':
             difference = timeString * 60;
             break;
           case 's':
-          case 'sec':
-          case 'secs':
-          case 'second':
-          case 'seconds':
             difference = timeString;
             break;
           case 'y':
@@ -60,7 +51,7 @@ export const toTimestamp = (date: string | number | Date): number => {
   }
 };
 
-export const setItem = (key: string, value: unknown, expiry: string | number | Date = '0'): void => {
+export const setItem = (key: string, value: unknown, expiry: string | number | Date = '0') => {
   const data: LocalStorageData = {
     key,
     value,
@@ -70,6 +61,8 @@ export const setItem = (key: string, value: unknown, expiry: string | number | D
 };
 
 export const hasItem = (key: string): boolean => !!localStorage.getItem(key);
+
+export const removeItem = (key: string) => localStorage.removeItem(key);
 
 export function getItem<S = undefined>(key: string): S | null {
   const value = localStorage.getItem(key);
